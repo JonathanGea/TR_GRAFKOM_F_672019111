@@ -70,43 +70,7 @@ void balok(int Titik_x1, int Titik_y1, int Titik_z1,int Titik_x2, int Titik_y2, 
     glEnd();
     glPopMatrix();
 }
-void segiempatz(int x1, int y1, int x2, int y2, int z )  // segiempat ( kiri , titik bawah , kanan , tinggi , posisi z , r,g,b)
-{
-    glBegin(GL_QUADS);
-    glVertex3f(x2, y1, z);
-    glVertex3f(x2, y2, z);
-    glVertex3f(x1, y2, z);
-    glVertex3f(x1, y1, z);
-    glEnd();
-}
-void garissegiempatz(int x1, int y1, int x2, int y2, int z )  // segiempat ( kiri , titik bawah , kanan , tinggi , posisi z , r,g,b)
-{
-    glBegin(GL_LINE);
-    glVertex3f(x2, y1, z);
-    glVertex3f(x2, y2, z);
-    glVertex3f(x1, y2, z);
-    glVertex3f(x1, y1, z);
-    glEnd();
-}
-void segiempatx(int y1, int z1, int y2, int z2, int x )
-{
-    glBegin(GL_QUADS);
-    glVertex3f(x, y1, z2);
-    glVertex3f(x, y2, z2);
-    glVertex3f(x, y2, z1);
-    glVertex3f(x, y1, z1);
-    glEnd();
-}
 
-void segiempaty(int x1, int z1, int x2, int z2, int y )
-{
-    glBegin(GL_QUADS);
-    glVertex3f(x1, y, z2);
-    glVertex3f(x2, y, z2);
-    glVertex3f(x2, y, z1);
-    glVertex3f(x1, y, z1);
-    glEnd();
-}
 void tampil(void)
 {
     if (is_depth)
@@ -117,37 +81,32 @@ void tampil(void)
     {
         glClear(GL_COLOR_BUFFER_BIT);
     }
-    /*glColor3f(0.0,1.0,1.0) --> warna jendela
-    atap -->0.0, 0.7, 0.0
-    tekstur -->1.0, 0.9, 0.6
-    dinding --> 1.0, 1.0, 0.8
-    kaca -->0.2, 0.5, 1.0
-    puncak -->0.4, 1.0, 0.8 */
-
     glColor3f(1,1,1);
-    segiempaty(-130,60,130,-60,-10); // dasar
+    balok(-130,-16,60,130,-10,-60);
     glColor3f (1.0, 1.0, 0.6);
     balok(-120,-10,50,120,0,-50);
     //--------------------------------------------
     glColor3f (0.2, 0.5, 1.0);
-    balok(-70,0,16,70,80,-40); // utama kaca
+    balok(-70,0,16,70,80,-41); // utama kaca
     balok(-5,37,26,5,75,25); // bagian kaca menara
     balok(-2,83,24,2,88,23);
 
 
     glColor3f (0.5, 0.5, 0.5);
-    for (int z =0; z <47;z++){
-    balok(-69+ (3*z),0,17,-70+(3*z),80,17);
+    for (int z =0; z <47; z++)
+    {
+        balok(-69+ (3*z),0,17,-70+(3*z),80,17);
     }
-    for (int z =0; z <12;z++){
-    balok(-70,0+(7*z),17,70,1+(7*z),17);
+    for (int z =0; z <12; z++)
+    {
+        balok(-70,0+(7*z),17,70,1+(7*z),17);
     }
 
     glColor3f (0.0, 0.7, 0.0);
-    balok(-70,80,16,70,81,-30);
+    balok(-70,80,16,70,81,-41);
     glColor3f (0.2, 0.5, 1.0);
-    balok(20,0,20,110,30,-40);  // 1
-    balok(-20,0,20,-110,30,-40); // -1
+    balok(20,0,20,110,30,-41);  // 1
+    balok(-20,0,20,-110,30,-41); // -1
 
     glColor3f (1.0, 1.0, 0.8);
     balok(20,30,20,100,40,-40);
@@ -158,7 +117,6 @@ void tampil(void)
     balok(-20,50,20,-80,60,-40);
 
     // objekk --------------------------------------------------
-
 
     balok(-75,5,-25,-75,30,0); //papan
     glColor3f(1.0, 0.0, 0.0);
@@ -197,7 +155,8 @@ void tampil(void)
     balok(-30,10,-40,-35,13,-40);
     balok(-30,10,-40,-30,13,-37);
     balok(-35,10,-40,-35,13,-37);
-    balok(-35,13,-40,-30,13,-37);balok(-75,5,-25,-75,30,0); //papan
+    balok(-35,13,-40,-30,13,-37);
+    balok(-75,5,-25,-75,30,0); //papan
     glColor3f(1.0, 0.0, 0.0);
     balok(-60,10,-40,-50,10,5);
     balok(-58,0,-38,-58,10,2);
@@ -236,16 +195,15 @@ void tampil(void)
     balok(-35,10,-40,-35,13,-37);
     balok(-35,13,-40,-30,13,-37);
 
-
     balok(-10,10,25,10,80,16); // start menara depan
     balok(-11,80,26,11,81,6); // pembatas
     balok(-8,81,23,8,90,8); // 1
     balok(-9,90,24,9,91,7); // pembatas 1
-    // glColor3f (0.4, 1.0, 0.8);
     balok(-6,91,23,6,100,8); // 2
     balok(-7,100,26,7,101,5); // pembatas 2
+    glColor3f (0.4, 1.0, 0.8);
     balok(-6,101,23,6,108,8); // kubah
-    // glColor3f (0, 0, 0);
+    glColor3f (0, 0, 0);
     balok(-2,108,18,2,113,12);
     balok(-1,113,16,1,125,14);
 
@@ -281,11 +239,7 @@ void tampil(void)
     balok(25,9,40,100,17,32);
     balok(-25,9,40,-100,17,32);
 
-
-
-
 //===================================================================================================================
-
     glutSwapBuffers();
 }
 
