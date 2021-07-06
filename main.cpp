@@ -1,3 +1,9 @@
+// TR GRAFKOM
+// 6 JULI 2021
+// Jonathan Gea 672019111
+// Theoputra berkat zega 672019302
+
+
 #include<windows.h>
 #include<gl/glut.h>
 
